@@ -295,7 +295,10 @@ public class BarcodeScanner extends CordovaPlugin {
 //        File wallpaperDirectory = new File(
 //                Environment.getExternalStorageDirectory() + IMAGE_DIRECTORY);
         File wallpaperDirectory = new File(
-            this.cordova.getActivity().getExternalFilesDir("") + IMAGE_DIRECTORY);
+            this.cordova.getActivity().getCacheDir() + IMAGE_DIRECTORY);
+        if(wallpaperDirectory.exists()){
+            wallpaperDirectory.delete();
+        }
         // have the object build the directory structure, if needed.
         if (!wallpaperDirectory.exists()) {
             Log.d("dirrrrrr", "" + wallpaperDirectory.mkdirs());
