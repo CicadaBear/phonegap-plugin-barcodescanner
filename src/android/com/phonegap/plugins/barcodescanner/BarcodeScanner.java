@@ -121,7 +121,7 @@ public class BarcodeScanner extends CordovaPlugin {
                     type = TEXT_TYPE;
                 }
 
-                if (data == null) {
+                if (data == null || data.equals(""))){
                     callbackContext.error("User did not specify data to encode");
                     return true;
                 }
@@ -296,7 +296,7 @@ public class BarcodeScanner extends CordovaPlugin {
 //                Environment.getExternalStorageDirectory() + IMAGE_DIRECTORY);
         File wallpaperDirectory = new File(
             this.cordova.getActivity().getCacheDir() + IMAGE_DIRECTORY);
-        if(wallpaperDirectory.exists()){
+        if (wallpaperDirectory.exists()) {
             wallpaperDirectory.delete();
         }
         // have the object build the directory structure, if needed.
